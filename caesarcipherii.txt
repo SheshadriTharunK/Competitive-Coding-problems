@@ -1,0 +1,22 @@
+def dynamickey(message,key):
+      result=''
+      for i in range(len(message)):
+            char=message[i]
+            result+=chr((ord(char)-65+ord(key[i])-65)%26+65)
+      return result
+
+
+
+
+
+
+
+
+
+
+if __name__=="__main__":
+    message=''.join(input().upper())
+    secret=''.join(input().upper()) 
+    key1=secret+message
+    key=key1[0:len(message)]
+    print(dynamickey(message,key))
