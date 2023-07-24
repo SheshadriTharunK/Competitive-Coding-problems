@@ -1,0 +1,39 @@
+'''MissingContestTaker
+
+The Coding Contest has N students, who are assigned exam numbers 0 to N-1. After the exam, the instructor realized that only N-1 students participated in the exam.
+
+Giving the N-1 exam papers, each with the number of one student, you need to find out which student was absent from the exam.
+
+Input Format
+
+The first line contains N.
+
+The next N-1 lines contains exam numbers.
+
+Constraints
+
+1 < N < 3*10^6
+
+Each number from the second line is between 0 and N-1, inclusive.
+
+Output Format
+
+Output one number, the missing student's ID.
+
+Sample Input 0
+
+4
+1
+0
+3
+Sample Output 0
+
+2'''
+T=int(input())
+sum1=T-1
+sum=0
+for i in range(T-1):
+     x=int(input())
+     sum1+=i
+     sum+=x 
+print(sum1-sum)
