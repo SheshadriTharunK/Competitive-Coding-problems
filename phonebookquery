@@ -1,0 +1,55 @@
+'''PhoneBook-I
+
+You are given a phone book that consists of people's names and their phone number. After that you will be given some person's name as query. For each query, print the phone number of that person. You can also assume that no two records have same name.
+
+Input Format
+
+The first line will have an integer N and M, denoting the number of entries in the phone book and number of queries respectively.
+
+Each entry consists of two lines: a name and the corresponding phone number.
+
+Each query will contain a person's name.
+
+Constraints
+
+1 <= N,M <= 10^5
+
+A person's name consists of only lower-case English letters and single word only.
+
+Each phone number has exactly 8 digits without any leading zeros.
+
+Output Format
+
+For each query, print "NotFound" if the person has no entry in the phone book. Otherwise, print the person's phone number.
+
+Sample Input 0
+
+3 3
+sam 99912222
+tom 11122222
+harry 12299933
+sam
+tom
+harry
+Sample Output 0
+
+99912222
+11122222
+12299933
+
+​
+'''
+m,n=map(int,input().split())
+p={}
+for i in range(m):
+    x,k=map(str,input().split())
+    p[x]=k 
+for i in range(n):
+    j=input()
+    if j in p:
+      print(p[j])
+    else:
+        print("NotFound")
+        
+        
+        
