@@ -1,0 +1,60 @@
+'''PhoneBook-II
+
+Most people must have an experience with maintaining phonebook in your phone. In this problem, you are asked to implement such phonebook that allows three operatons: Adding a contact with name & number, Removing contact details by name and querying number of contact by name.
+
+Assume the following:
+
+Adding a contact with same name replaces the existing value with new value.
+Removal operation is performed only on existing contacts.
+Querying an existing contact by name should display the corresponding number if exists, "NotFound" otherwise.
+Input Format
+
+The first line will have an integer N, representing the total number of operations on phonebook
+Next N lines contains an operation per line
+Add operation is of the format "A name number"
+Remove operation is of the format "R name"
+Query operation is of the format "Q name"
+Constraints
+
+1 <= N <= 10^5
+A person's name consists of only lower-case english letters and its length will be between 1 and 10.
+A phone number has exactly 8 digits without any leading zeros.
+Output Format
+
+For each query, print "NotFound" if the person has no entry in the phone book. Otherwise, print the person's phone number.
+
+Sample Input 0
+
+9
+A sam 99912222
+Q sam
+A tom 11122222
+R sam
+Q sam
+A harry 12299933
+Q sam1
+Q tom1
+Q harry1
+Sample Output 0
+
+99912222
+NotFound
+NotFound
+NotFound
+NotFound
+'''
+T=int(input())
+p={}
+for i in range(T):
+    a=input().split()
+    if a[0]=='A':
+        p[a[1]]=a[2]
+    elif a[0]=='R':
+        del p[a[1]]
+    elif a[0]=='Q':
+        if a[1] in p:
+            print(p[a[1]])
+        else:
+            print("NotFound")
+        
+        
