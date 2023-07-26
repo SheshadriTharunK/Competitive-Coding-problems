@@ -1,0 +1,60 @@
+'''PhoneBook-III
+
+Most people must have an experience with maintaining phonebook in your phone. In this problem, you are asked to implement such phonebook that allows three operatons: Adding a contact with name & number, Removing contact details by name and view the contacts.
+
+Assume the following:
+
+Adding a contact with same name replaces the existing value with new value.
+Removal operation is performed only on existing contacts.
+View operation displays all contacts sorted by name.
+Input Format
+
+The first line will have an integer N, representing the total number of operations on phonebook
+Next N lines contains an operation per line
+Add operation is of the format "A name number"
+Remove operation is of the format "R name"
+View operation is of the format "V"
+Constraints
+
+1 <= N <= 10^5
+A person's name consists of only lower-case english letters and its length will be between 1 and 10.
+A phone number has exactly 8 digits without any leading zeros.
+Output Format
+
+For each view, print all the contacts in sorted order within a single line with space separation. The format of each contact is "name=phonenumber". If there are no contacts, display "EMPTY".
+
+Sample Input 0
+
+8
+A sam 99912222
+V
+A tom 11122222
+A sam 99912233
+V
+R sam
+A harry 12299933
+V
+Sample Output 0
+
+sam=99912222
+sam=99912233 tom=11122222
+harry=12299933 tom=11122222'''
+
+
+T=int(input())
+dict={}
+for i in range(T):
+    a=input().split()
+    if a[0]=='A' and a[2] not in dict:
+          dict[a[1]]=a[2]
+    elif a[0]=='V':
+        if len(dict)==0:
+            print("EMPTY")
+        else:
+            s=sorted(dict)
+            for i in s:
+                print("{}={}".format(i,dict[i]),end=' ')
+            print(end='\n')
+    elif a[0]=='R':
+        del dict[a[1]]
+        
