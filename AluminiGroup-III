@@ -1,0 +1,48 @@
+'''AlumniGroup-III
+
+You need to write a simple program for tracking students of an alumni-group using their unique IDs. Students can either enter or exit the group at anytime. If asked for view then your program should display all the active users in the group in the lexicographically increasing order. You can assume that only students existing in the group only perform exit operation and also students outside the group only perform enter operation. Intially, all the students are outside the group.
+
+Input Format
+
+First line consists of a number n, indicating the total number of operations.
+
+This is followed by n lines, each line describing either an entry or exit or view operation. Each description is of the form 'entry ID' or 'exit ID' or 'view'.
+
+Constraints
+
+1 <= n <= 10^6
+Length of each ID is 10
+ID consists of lowercase characters only
+Output Format
+
+Each view must respond with a line containing all the members of group till that time, in increasing order, with space separation among each ID. If there are no members in the group, display "EMPTY".
+
+Sample Input 0
+
+8
+entry krishna
+view
+exit krishna
+entry sitara
+entry raj
+view
+entry nakshatra
+view
+Sample Output 0
+
+krishna
+raj sitara
+nakshatra raj sitara'''
+T=int(input())
+l=set()
+for i in range(T):
+    a=input().split()
+    if a[0]=='entry' and a[1] not in l:
+        l.add(a[1])
+    elif a[0]=='view':
+       s=sorted(l)
+       for i in s:
+           print(i,end=' ')
+       print()
+    elif a[0]=='exit' and a[1] in l:
+        l.remove(a[1])
