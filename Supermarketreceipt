@@ -1,0 +1,37 @@
+'''SuperMarketReceipt
+Given a list of 3 items, you are asked to display those items in a better aligned from. Refer to sample for the expected format.
+
+Input Format
+
+Each line of input will contain a item name followed by a price. Price could be an integer or decimal number.
+
+Constraints
+
+Each item name will have a maximum of 10 alphabetic characters
+
+If price is an integer then it will be in the inclusive range from to 1 to 999
+
+If price is decimal number then it will be in the range from 1.0000 to 2000.0000
+
+Output Format
+
+In each line of output there should be two columns:
+
+The first column contains the itemname and is left justified using exactly 15 characters.
+
+The second column contains the price right justified within a width of 7, with two digits of precision.
+
+Sample Input 0
+
+Potato  75
+Chillies  60 
+Cucumber  25.2367
+Sample Output 0
+
+Potato           75.00
+Chillies         60.00
+Cucumber         25.24'''
+for i in range(3):
+    name=input().split()
+    print("{:<15}{:>7.2f}".format(name[0], float(name[1])))
+
