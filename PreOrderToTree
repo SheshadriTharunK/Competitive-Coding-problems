@@ -1,0 +1,73 @@
+'''PreorderToTree
+
+Given a random binary tree of size N in the preorder format(with null links), you need to construct tree and print the tree in pretty form.
+
+Input Format
+
+A single line consisting of preorder representation of binary tree. # symbol represents null.
+
+Constraints
+
+1 <= N <= 1000
+
+Output Format
+
+Refer to sample output.
+
+Sample Input 0
+
+2 5 8 # # 9 # # 7 # #
+Sample Output 0
+
+2
+  5(L)
+    8(L)
+    9(R)
+  7(R)'''
+from collections import deque
+
+class TreeNode():
+    def __init__(self, val):
+        self.val = val
+        self.left = None 
+        self.right = None
+
+def insert(q):
+    if not q:
+        return None
+
+    value = q.popleft()
+    if value == '#':
+        return None
+
+    root = TreeNode(value)
+    root.left = insert(q)
+    root.right = insert(q)
+
+    return root
+
+def display(root, nspaces, label):
+    if root is None:
+        return 
+    
+    for i in range(nspaces):
+        print(' ', end='')
+
+    print(root.val, end='')
+    if label != '':
+        print('(', label, ')', sep='')
+    else:
+        print()
+
+    display(root.left, nspaces + 2, 'L')
+    display(root.right, nspaces + 2, 'R')
+
+def main():
+    a = input().split()
+    root = None 
+    q = deque(a)
+    root = insert(q)
+    display(root, 0, '')
+
+main()
+
