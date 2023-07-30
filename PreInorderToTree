@@ -1,0 +1,76 @@
+'''PreInorderToTree
+
+Given a random binary tree of size N in the pre and inorder formats together, you need to construct tree and print the tree in pretty form.
+
+Input Format
+
+First line consisting of preorder representation of binary tree.
+
+Second line consisting of inorder representation of binary tree.
+
+Constraints
+
+1 <= N <= 1000
+
+Output Format
+
+Refer to sample output.
+
+Sample Input 0
+
+2 5 8 9 7
+8 5 9 2 7
+Sample Output 0
+
+2
+  5(L)
+    8(L)
+    9(R)
+  7(R)'''
+from collections import deque
+
+class TreeNode():
+    def __init__(self, val):
+        self.val = val
+        self.left = None
+        self.right = None
+
+def build_tree(preorder, inorder):
+    if not preorder or not inorder:
+        return None
+    
+    root_val = preorder.popleft()
+    root = TreeNode(root_val)
+    
+    index = inorder.index(root_val)
+    
+    
+    root.left = build_tree(preorder, inorder[:index])
+    root.right = build_tree(preorder, inorder[index + 1:])
+    
+    return root
+
+def display(root, nspaces, label):
+    if root is None:
+        return 
+    
+    for i in range(nspaces):
+        print(' ', end='')
+
+    print(root.val, end='')
+    if label != '':
+        print('(', label, ')', sep='')
+    else:
+        print()
+
+    display(root.left, nspaces + 2, 'L')
+    display(root.right, nspaces + 2, 'R')
+
+def main():
+    a = deque(input().split())
+    b = input().split()
+    root = build_tree(a, b)
+    display(root, 0, '')
+
+main()
+
