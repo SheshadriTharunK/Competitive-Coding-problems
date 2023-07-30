@@ -1,0 +1,92 @@
+'''LevelorderToTree
+
+Given a random binary tree of size N in the levelorder format(with null links), you need to construct tree and print the tree in pretty form.
+
+Input Format
+
+A single line consisting of levelorder representation of binary tree. # symbol represents null.
+
+Constraints
+
+1 <= N <= 1000
+
+Output Format
+
+Refer to sample output.
+
+Sample Input 0
+
+2 5 7 8 # # 9
+Sample Output 0
+
+2
+  5(L)
+    8(L)
+  7(R)
+    9(R)
+Submissions: 1
+Max Score: 0
+Difficulty: Medium
+Rate This Challenge:
+
+    
+More
+'''
+from collections import deque
+
+class TreeNode():
+    def __init__(self, val):
+        self.val = val
+        self.left = None 
+        self.right = None
+
+def insert(a):
+    s = deque(a)
+    q = deque()
+    root_value = s.popleft()
+    root = TreeNode(root_value)
+    q.append(root)
+    
+    while q:
+        node = q.popleft()
+        if s:  
+           left_value = s.popleft()
+        else:
+            left_value = '#'
+
+        if left_value != '#':
+            node.left = TreeNode(left_value)
+            q.append(node.left)
+        if s:  
+           right_value = s.popleft()
+        else:
+            right_value= '#'
+        if right_value != '#':
+            node.right = TreeNode(right_value)
+            q.append(node.right)
+
+    return root
+
+def display(root, nspaces, label):
+    if root is None:
+        return 
+    
+    for i in range(nspaces):
+        print(' ', end='')
+
+    print(root.val, end='')
+    if label != '':
+        print('(', label, ')', sep='')
+    else:
+        print()
+
+    display(root.left, nspaces + 2, 'L')
+    display(root.right, nspaces + 2, 'R')
+
+def main():
+    a = input().split()
+    root = insert(a)
+    display(root, 0, '')
+
+main()
+
