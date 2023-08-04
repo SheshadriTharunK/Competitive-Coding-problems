@@ -1,0 +1,89 @@
+'''PairSum-I
+
+Given a sorted sequence of N integers and a target X, you are asked to find whether there exists two integers in the sequence such that their sum is equal to X.
+
+Input Format
+
+First line consists of N and X.
+
+Second line consists of a sequence of N integers.
+
+Constraints
+
+2 <= N <= 10^4
+
+10^-9 <= X <= 10^9
+
+10^-9 <= numbers of sequence <= 10^9
+
+Output Format
+
+Output a single line with YES if a pari exists whose sum is X otherwise NO.
+
+Sample Input 0
+
+5 10
+1 2 3 4 5
+Sample Output 0
+
+NO
+Sample Input 1
+
+5 5
+1 2 3 4 5
+Sample Output 1
+
+YES'''
+
+#2-Pointers-trick:
+def pairsum():
+    N,X=map(int,input().split())
+    a=list(map(int,input().split()))
+    l,r=0,len(a)-1 
+    while l<r:
+        if a[l]+a[r]==X:
+            return "YES"
+        elif  a[l]+a[r]>X:
+            r=r-1 
+        elif  a[l]+a[r]<X:
+            l=l+1
+    return "NO"
+print(pairsum())
+
+#Linear_Search:
+def pairsum():
+    N,X=map(int,input().split())
+    a=list(map(int,input().split()))
+    for i in range(len(a)):
+         remain=X-a[i]
+         if remain in a[i+1:]:
+            return "YES"
+    return "NO"
+print(pairsum())
+
+#Binary_Search:
+from bisect import bisect_left,bisect_right 
+
+def pairsum():
+    N,X=map(int,input().split())
+    a=list(map(int,input().split()))
+    for i in a:
+        x=X-i 
+        l=bisect_left(a,x)
+        if l+x==X:
+            return "YES"
+    return "NO"
+
+print(pairsum())
+
+#Brute_Force:
+def pairsum():
+    N,X=map(int,input().split())
+    a=list(map(int,input().split()))
+    for i in range(len(a)):
+        for j in range(i+1,len(a)):
+            if a[i]+a[j]==X:
+               return "YES"
+                
+    return "NO"
+print(pairsum())
