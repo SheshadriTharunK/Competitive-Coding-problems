@@ -1,0 +1,48 @@
+'''PairSum-II
+
+Given a sorted sequence of N integers and a target X, you are asked to count the number of pairs in the sequence whose sum is X. Assume that the input sequence doesnot contain duplicates.
+
+Input Format
+
+First line consists of N and X.
+
+Second line consists of a sequence of N integers.
+
+Constraints
+
+2 <= N <= 10^6
+
+10^-9 <= X <= 10^9
+
+10^-9 <= numbers of sequence <= 10^9
+
+Output Format
+
+Output a single line with count of pairs whose sum is X.
+
+Sample Input 0
+
+5 6
+1 2 3 4 5
+Sample Output 0
+
+2'''
+
+def main():
+    N,X=map(int,input().split())
+    a=list(map(int,input().split()))
+    l,r=0,len(a)-1 
+    count=0
+    while l<r:
+        if a[l]+a[r]==X:
+            count+=1
+            l+=1
+            r-=1
+        elif a[l]+a[r]>X:
+            r-=1
+        else:
+            l+=1 
+            
+    
+    return count
+print(main())
