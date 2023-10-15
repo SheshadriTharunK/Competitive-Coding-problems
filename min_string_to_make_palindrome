@@ -1,0 +1,11 @@
+def is_palindrome(s):
+    return s==s[::-1]
+        
+def main():
+    s=input()
+    for i in range(len(s)):
+       if  is_palindrome(s[i:]):
+             result= s[:i][::-1]
+             print(result)
+             break
+main()
