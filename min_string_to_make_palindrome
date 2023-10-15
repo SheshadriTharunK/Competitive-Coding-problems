@@ -3,6 +3,9 @@ def is_palindrome(s):
         
 def main():
     s=input()
+    if s==s[::-1]:
+        print("It is palindrome")
+        break
     for i in range(len(s)):
        if  is_palindrome(s[i:]):
              result= s[:i][::-1]
