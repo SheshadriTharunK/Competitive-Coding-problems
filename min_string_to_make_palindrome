@@ -1,14 +1,9 @@
-def is_palindrome(s):
-    return s==s[::-1]
-        
-def main():
-    s=input()
-    if s==s[::-1]:
-        print("It is palindrome")
-        break
+s=input()
+if s==s[::-1]:
+    print("Given is a palindrome")
+    
+else:
     for i in range(len(s)):
-       if  is_palindrome(s[i:]):
-             result= s[:i][::-1]
-             print(result)
-             break
-main()
+        if s[i:]==s[i:][::-1]:
+            print(s[:i][::-1])
+            break
