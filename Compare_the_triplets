@@ -1,1 +1,17 @@
-'
+a,b,c=map(int,input().split())
+d,e,f=map(int,input().split())
+A=0
+B=0
+if a>d:
+    A+=1 
+elif a<d:
+    B+=1 
+if b>e:
+    A+=1 
+elif b<e:
+    B+=1 
+if c>f:
+    A+=1 
+elif c<f:
+    B+=1 
+print(A,B)
