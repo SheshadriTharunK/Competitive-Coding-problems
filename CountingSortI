@@ -1,0 +1,41 @@
+'''CountingSort-I
+
+Write a program to sort the characters of a given string of length N.
+
+Note: Try to get solution in O(n) time.
+
+Input Format
+
+First line consists of N, length of the string.
+
+Second line consists of N characters of the string.
+
+Constraints
+
+1 <= N <= 10^6
+
+String consists of only lowercase alphabet
+
+Output Format
+
+A single line with the characters of string sorted.
+
+Sample Input 0
+
+12
+algorithmica
+Sample Output 0
+
+aacghiilmort
+'''
+
+n=int(input())
+s=input()
+a=[0]*26 
+for i in s:
+    a[ord(i)-ord('a')]+=1 
+res=''
+for i in range(26):
+    for j in range(a[i]):
+        res+=chr(i+97)
+print(res)
