@@ -1,0 +1,49 @@
+'''StaticRangeSumQuery-I
+
+Given an integer sequence A of size N, you are asked to perform Q queries which are of the following type:
+
+L R - Find sum of all the elements from index L to index R of A.
+Input Format
+
+First line of input contains N and Q.
+Second line contains N space separated integers denoting the sequence A.
+Each line in next Q lines will have queries of the given type.
+Constraints
+
+1 <= N, Q <= 10^5
+0 <= L <= R <= N-1
+-10^9 <= A[i] <= 10^9 (0 <= i < N)
+Output Format
+
+For each query, output a line with expected answer.
+
+Sample Input 0
+
+6 3
+-2 0 3 -5 2 -1
+0 2
+2 5
+0 5
+Sample Output 0
+
+1
+-1
+-3''' 
+def find(l,u,a):
+    if l==0:
+        print(a[u])
+    else:
+       print(a[u]-a[l-1])
+
+def main():
+    n,q=map(int,input().split()) 
+    a=list(map(int,input().split()))
+    for i in range(1,n):
+          a[i]=a[i-1]+a[i]
+    for i in range(q):
+        l,u=map(int,input().split())
+        find(l,u,a)
+
+main()
+    
+    
