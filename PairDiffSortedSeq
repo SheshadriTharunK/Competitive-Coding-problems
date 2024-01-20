@@ -1,0 +1,55 @@
+'''PairDiffSortedSeq
+
+Given a sorted sequence A of N unique integers and an integer X, your task is to count the number of unordered pairs (A[i],A[j]) such that |A[i]-A[j]| = X.
+
+Input Format
+
+First line consists of T - the number of testcases.
+T testcases follow. First line of each testcase consists of N and X. Second line of each testcase contains N elements of sequence A with space separation.
+Constraints
+
+1 <= T <= 100
+2 <= N <= 10^5
+1 <= X <= 10^9
+1 <= A[i] <= 10^9 (0 <= i < N)
+Output Format
+
+For each testcase, output a line with an expected answer.
+
+Sample Input 0
+
+2
+5 2
+1 2 3 4 5
+3 1
+1 6 7
+Sample Output 0
+
+3
+1''' 
+
+
+
+
+def find(a,k):
+    count=0
+    i,j=0,0 
+    while i<=j and j<=len(a)-1:
+        d=abs(a[i]-a[j])
+        if d==k:
+            count=count+1 
+            j+=1 
+        elif d>k:
+            i+=1 
+        else:
+            j+=1 
+    return count
+
+
+def main():
+    n=int(input())
+    for i in range(n): 
+        n,k=map(int,input().split()) 
+        a=list(map(int,input().split()))
+        print(find(a,k))
+main()
