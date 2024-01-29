@@ -1,0 +1,54 @@
+'''A group of N players want to elect a team leader. They each wear a uniform with a distinct ID, and the IDs are in the range of 1 to N.
+
+They decided to use paper ballot to vote for the leader. Each voter writes the ID of a candidate on a ballot and places it in the ballot box. The candidate with the highest number of votes becomes the leader. If two or more candidates have the same number of votes, then the candidate with larger ID will be elected as leader.
+
+Given a sequence A of IDs voted by N players, your task is to find the leader ID.
+
+Input Format
+
+First line consists of T - the number of testcases.
+T testcases follow. First line of each test case contains N. Second line of each testcase contains N space separated integers.
+Constraints
+
+1 <= T <= 50
+1 <= N <= 10^5
+1 <= A[i] <= N (i <= 0 < N)
+Output Format
+
+For each testcase, output a line with an expected answer.
+
+Sample Input 0
+
+2
+4
+1 1 2 2
+10
+10 8 2 5 7 1 3 9 4 6
+Sample Output 0
+
+2
+10''' 
+def find(a):
+    l=[0]*(len(a)+1)
+    for i in a:
+        if l[i]==0:
+            l[i]=1 
+        else:
+            l[i]+=1 
+    m=[]
+    for i in range(len(l)):
+        if l[i]!=0:
+            m.append([l[i],i])
+   
+    s=sorted(m,key=lambda x:(-x[0],-x[1]))
+    for i in s:
+        print(i[1])
+        break
+
+def main():
+    n=int(input())
+    for i in range(n):
+        k=int(input())
+        a=list(map(int,input().split()))
+        find(a)
+main()
