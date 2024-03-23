@@ -1,0 +1,18 @@
+'' ' Count of subsequences whose sum is k''' 
+def find(a,i,sum):
+    
+    if i>=len(a):
+        if sum==2:
+            return 1 
+        else:
+            return 0 
+    l=find(a,i+1,sum+a[i])
+    r=find(a,i+1,sum)
+    return l+r
+def main():
+    ds=[]
+    a=[1,2,1]
+    i=0 
+    sum=0 
+    print(find(a,i,sum))
+main()
