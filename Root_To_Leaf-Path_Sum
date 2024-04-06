@@ -1,0 +1,110 @@
+'''RootToLeafPathSum
+
+Given a random binary tree of N elements, your task is to compute the sum of elements of each root-to-leaf path in a given tree. The order of sums must be printed from leftmost path to rightmost path.
+
+Note: The input binary tree is represented in preorder format with null links.
+
+Input Format
+
+First line of input contains T - the number of testcases.
+T testcases follow. Each testcase consists of preorder format of a binary tree in a line, and a symbol # represents None/NULL.
+Constraints
+
+1 <= T <= 10^2
+1 <= N <= 10^3
+1 <= elements of tree <= 10^9
+Output Format
+
+For each testcase, output a line with an an expected answer.
+
+Sample Input 0
+
+2
+2 5 8 # # 9 # # 7
+1 2 3 4 5
+Sample Output 0
+
+15 16 9
+15
+Explanation 0
+
+Testcase1:
+
+      2
+    /  \
+   5    7
+ /  \
+8    9
+Testcase2:
+
+        1
+       /
+      2
+     /
+    3
+   /
+  4
+ /
+5'''
+class TreeNode():
+    def __init__(self,val):
+        self.val=val
+        self.left=None
+        self.right=None 
+
+def insert(root,a,val):
+    if a:
+        val=a.pop(0)
+        if val!='#':
+            root=TreeNode(int(val))
+            root.left=insert(root.left,a,val) 
+            root.right=insert(root.right,a,val)
+        else:
+           return None
+    else:
+        return None
+    return root 
+
+def sum1(root,sum):
+    if root.left is None and root.right is  None:
+        print(sum,end=' ')
+        return 
+    if root is None:
+        return 0
+    else:
+        if root.left is not None and root.right is not None:
+            sum1(root.left,sum+root.left.val)
+            sum1(root.right,sum+root.right.val)
+        if root.left is None:
+             sum1(root.right,sum+root.right.val)
+        if root.right is None:
+            sum1(root.left,sum+root.left.val)
+        
+import sys 
+sys.setrecursionlimit(100000)
+def main():
+    t=int(input())
+    for i in range(t):
+        root=None
+        a=input().split()
+        root=insert(root,a,0)
+        sum=root.val
+        sum1(root,sum)
+        print()
+main()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
