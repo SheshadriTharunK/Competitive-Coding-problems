@@ -1,0 +1,8 @@
+''' Swap two strings with out using third variable ''' 
+a='hello'
+b='world'
+a=a+b 
+a=a[:len(b)] 
+b=a[len(b):] 
+print(a) 
+print(b
