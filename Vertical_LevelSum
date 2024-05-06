@@ -1,0 +1,96 @@
+'''
+Given a random binary tree of N elements, your task is to compute vertical level-wise sum of the elements of the given tree. The vertical level sums must be printed in the order from left to right.
+
+Note: The input binary tree is represented in preorder format with null links.
+
+Input Format
+
+First line of input contains T - the number of testcases.
+T testcases follow. Each testcase consists of preorder format of a binary tree in a line, and a symbol # represents None/NULL.
+Constraints
+
+1 <= T <= 10^2
+1 <= N <= 10^3
+1 <= elements of tree <= 10^9
+Output Format
+
+For each testcase, output a line with an an expected answer.
+
+Sample Input 0
+
+1
+5 3 7 # # 6 # # 8 4 # # 1 9 # # 2
+Sample Output 0
+
+7 3 15 17 1 2
+Explanation 0
+
+Tree:
+
+       5
+     /   \
+    3     8
+  /  \   / \
+ 7    6 4   1
+           / \
+          9   '''
+from collections import deque 
+class TreeNode():
+    def __init__(self,val):
+        self.val=val 
+        self.left=None
+        self.right=None 
+def insert(root,a,val):
+    if a:
+        val=a.pop(0)
+        if val!='#':
+            root=TreeNode(int(val))
+            root.left=insert(root,a,val)
+            root.right=insert(root,a,val)
+        else:
+            return 
+    else:
+        return 
+    return root 
+def vertical(root):
+    q=deque()
+    c=0 
+    d={}
+    q.append([root,c])
+    while q:
+        count=len(q)
+        for i in range(count):
+                a,b=q.popleft()
+                if b in d:
+                    d[b]+=a.val 
+                else:
+                    d[b]=a.val  
+                if a.left:
+                    q.append([a.left,b-1])
+                if a.right:
+                    q.append([a.right,b+1])
+    d=sorted(d.items(),key=lambda x:x[0])
+    for i ,j in d:
+        print(j,end=' ')
+import sys
+sys.setrecursionlimit(10000)
+        
+def main():
+    t=int(input())
+    for i in range(t):
+        a=input().split()
+        root=None 
+        root=insert(root,a,0)
+        vertical(root)
+        print()
+main()
+
+
+
+
+
+
+
+
+
+
