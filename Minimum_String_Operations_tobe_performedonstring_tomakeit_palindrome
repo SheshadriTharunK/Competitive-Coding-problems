@@ -1,0 +1,18 @@
+s='sheshadri'
+c=0 
+if s==s[::-1]:
+    print('palindrome')
+else:
+    d={} 
+    for i in s:
+        if i in d:
+            d[i]+=1 
+        else:
+            d[i]=1 
+    for k,v in d.items():
+        if v%2==0:
+            continue 
+        else:
+            c+=1 
+    if c>1:
+        print(c-1)
