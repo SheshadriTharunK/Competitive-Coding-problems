@@ -1,0 +1,23 @@
+'''LONGEST COMMON PREFIX OF STRINGS'''
+
+
+def find(a):
+    if len(a)==0:
+        print('')
+    elif len(a)==1:
+        print(a[0])
+    a.sort(key=lambda x:len(x))
+    min=a[0]
+    f=False 
+    for i in a:
+        if min in i:
+            f=True 
+        else:
+            f=False 
+            break 
+    if f:
+        print(min)
+    else:
+        print('False')
+a=['geeks for geeks','gee','geek']
+find(a)
