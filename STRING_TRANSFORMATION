@@ -1,0 +1,15 @@
+#STRING_TRANSFORMER_I
+
+s='a2b3c4d5'
+ns=''
+c=''
+m=''
+for i in range(len(s)):
+    if s[i].isdigit():
+        c+=s[i]
+    else:
+        if m:
+            ns+=m*int(c)
+        c=''
+        m=s[i]
+print(ns+m*int(c)) 
