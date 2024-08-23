@@ -32,3 +32,34 @@ for i in range(len(s)):
             ns+=m 
             m=''
 print(ns+m*int(c)) 
+
+# STRING TRANSFORMER - III
+s='a2b3c4ed5fg'
+m=''
+ns=''
+c=0
+for i in range(len(s)):
+    if s[i].isdigit():
+        c=c*10+int(s[i])
+    else:
+        ns+=m*c 
+        m=s[i]
+        if  i+1<len(s) and s[i+1].isalpha() or i==len(s)-1:
+            ns+=m 
+        c=0 
+print(ns+m*c)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
