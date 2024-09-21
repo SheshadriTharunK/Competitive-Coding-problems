@@ -1,0 +1,13 @@
+a=[1,2,3,3,7,8,9,9,9,11]
+# 0  1 2 3 4 5 6 7 8 9 
+i,j=0,len(a)-1 
+x=9 
+ans=len(a)
+while i<=j:
+    mid = (i+j)//2 
+    if a[mid]>=x: 
+        ans=mid 
+        j=j-1 
+    else:
+        i=mid+1 
+print(ans)
